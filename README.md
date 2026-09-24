@@ -2,6 +2,8 @@
 
 A single-file ConSentinel security-product hero, built from the supplied design specification.
 
+[Live preview](https://howard118008y-commits.github.io/Hey-World/)
+
 Open `index.html` in a modern browser. No installation, build step, framework, or external JavaScript is required.
 
 The page includes responsive desktop, compact, and mobile layouts, a portrait navigation menu, and entrance animations. It respects the system's reduced-motion preference.
