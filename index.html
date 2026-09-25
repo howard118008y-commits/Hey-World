@@ -39,7 +39,7 @@
         .portal-heading strong{font-size:18px;margin-left:8px}
         .portal{position:relative;display:block;width:100%;aspect-ratio:320/350;padding:0;overflow:visible;border:0;
                 border-radius:90px;background:transparent;cursor:pointer;box-shadow:none;transform:none!important}
-        .portal video,.portal img{visibility:hidden;position:absolute;width:1px;height:1px;pointer-events:none}
+        .portal video{visibility:hidden;position:absolute;width:1px;height:1px;pointer-events:none}
         .portal-canvas{position:fixed;inset:0;z-index:3;width:100%;height:100%;pointer-events:none}
 
 
@@ -207,17 +207,17 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
 <body>
 <main class="experience" data-planet="mars">
   <div class="backgrounds" aria-hidden="true">
-    <img id="mercury-background" class="background" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d6fb8b6b-c15e-4aaa-9cf7-45bbb5e33372.jpg" alt="">
-    <img id="jupiter-background" class="background" src="https://science.nasa.gov/wp-content/uploads/2024/03/jupiter-marble-pia22946-16x9-1.jpg?resize=900,506" alt="">
-    <img id="saturn-background" class="background" src="https://science.nasa.gov/wp-content/uploads/2024/03/saturn-farewell-pia21345.jpg?resize=900,466" alt="">
-    <img id="uranus-background" class="background" src="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/general/images/2024/03/uranus-pia18182-16x9-1.jpg?w=900&amp;h=506&amp;fit=crop&amp;crop=faces%2Cfocalpoint" alt="">
-    <img id="neptune-background" class="background" src="https://science.nasa.gov/wp-content/uploads/2024/03/pia01492-neptune-full-disk-16x9-1.jpg?resize=900,506" alt="">
-    <video id="mars-background"  class="background is-visible" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/3c83091e-4046-4fd6-adbb-2edb728be79a.mp4" muted playsinline preload="auto"></video>
-    <video id="earth-background" class="background"            src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4" muted playsinline preload="auto"></video>
-    <video id="venus-background" class="background"            src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b30f64d9-1637-477a-83df-d0fc6461a422.mp4" muted playsinline preload="auto"></video>
+    <img id="mercury-background" class="background" src="assets/mercury-environment.png?v=topdown-20260925" alt="">
+    <img id="venus-background" class="background" src="assets/venus-environment.png?v=topdown-20260925" alt="">
+    <img id="earth-background" class="background" src="assets/earth-environment.png?v=topdown-20260925" alt="">
+    <img id="mars-background" class="background is-visible" src="assets/mars-environment.png?v=topdown-20260925" alt="">
+    <img id="jupiter-background" class="background" src="assets/jupiter-environment.png?v=topdown-20260925" alt="">
+    <img id="saturn-background" class="background" src="assets/saturn-environment.png?v=topdown-20260925" alt="">
+    <img id="uranus-background" class="background" src="assets/uranus-environment.png?v=topdown-20260925" alt="">
+    <img id="neptune-background" class="background" src="assets/neptune-environment.png?v=topdown-20260925" alt="">
   </div>
   <div class="preloader" id="preloader" aria-label="Loading Mars · 正在載入火星">
-    <video id="preloader-video" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/5fc5651c-3b5d-4171-b507-87f7e635d1b4.mp4" muted playsinline preload="auto"></video>
+    <video id="preloader-video" src="assets/mars-descent.mp4?v=topdown-20260925" muted playsinline preload="auto"></video>
     <div class="preloader-shade"></div>
   </div>
   <img class="floating-logo" id="floating-logo" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/eb7e0f53-50cd-4af5-abc4-8b9a52cdc01b.svg" alt="Hey World">
@@ -246,8 +246,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
       <span><span id="next-number">[03]</span> <strong id="next-name">Earth</strong><span class="zh" id="next-name-zh">地球</span></span>
     </div>
     <button class="portal" id="portal" type="button" aria-label="Travel to Earth · 前往地球">
-      <video id="portal-video" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4" muted playsinline preload="auto"></video>
-      <img id="portal-image" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d6fb8b6b-c15e-4aaa-9cf7-45bbb5e33372.jpg" alt="Mercury · 水星">
+      <video id="portal-video" src="assets/earth-descent.mp4?v=topdown-20260925" muted playsinline preload="auto"></video>
     </button>
   </section>
 
@@ -266,24 +265,20 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
 
 (() => {
   'use strict';
-  const BASE='https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P';
-  const TO_EARTH=BASE+'/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4';
-  const TO_VENUS=BASE+'/b30f64d9-1637-477a-83df-d0fc6461a422.mp4';
-  const TO_MARS=BASE+'/5fc5651c-3b5d-4171-b507-87f7e635d1b4.mp4';
   const planets=['Mercury','Venus','Earth','Mars','Jupiter','Saturn','Uranus','Neptune'];
   const planetNamesZh={Mercury:'水星',Venus:'金星',Earth:'地球',Mars:'火星',Jupiter:'木星',Saturn:'土星',Uranus:'天王星',Neptune:'海王星'};
   const factLabelsZh={'Distance:':'距離：','Year:':'一年：','Temperature:':'溫度：','Atmosphere:':'大氣：'};
   const states={
-    mars:{name:'Mars',next:'Earth',number:'[03]',approach:TO_MARS,portal:TO_EARTH,background:'mars-background',facts:[
+    mars:{name:'Mars',next:'Earth',number:'[03]',approach:'assets/mars-descent.mp4?v=topdown-20260925',portal:'assets/earth-descent.mp4?v=topdown-20260925',background:'mars-background',facts:[
       ['Distance:','About 228 million km (1.5 astronomical units).','約 2.28 億公里（1.5 天文單位）。'],
       ['Year:','One Martian year is equal to 687 Earth days.','火星的一年相當於 687 個地球日。'],
       ['Temperature:','Around -60 °C, dropping to -125 °C at the poles in winter.','約 −60 °C，兩極冬季可降至 −125 °C。'],
       ['Atmosphere:','Very thin, consisting of 95% carbon dioxide, with frequent dust storms.','大氣非常稀薄，95% 為二氧化碳，沙塵暴頻繁。']]},
-    earth:{name:'Earth',next:'Venus',number:'[02]',approach:TO_EARTH,portal:TO_VENUS,background:'earth-background',facts:[
+    earth:{name:'Earth',next:'Venus',number:'[02]',approach:'assets/earth-descent.mp4?v=topdown-20260925',portal:'assets/venus-descent.mp4?v=topdown-20260925',background:'earth-background',facts:[
       ['Distance:','149.6 million km from the Sun.','距離太陽 1.496 億公里。'],['Year:','365.25 Earth days.','365.25 個地球日。'],
       ['Temperature:','Average surface temperature around 15 °C.','平均地表溫度約 15 °C。'],
       ['Atmosphere:','Mostly nitrogen and oxygen, supporting life and liquid water.','主要由氮氣與氧氣組成，支持生命與液態水的存在。']]},
-    venus:{name:'Venus',next:'Mercury',number:'[01]',approach:TO_VENUS,portal:'assets/mercury-descent.mp4',background:'venus-background',facts:[
+    venus:{name:'Venus',next:'Mercury',number:'[01]',approach:'assets/venus-descent.mp4?v=topdown-20260925',portal:'assets/mercury-descent.mp4?v=topdown-20260925',background:'venus-background',facts:[
       ['Distance:','108.2 million km from the Sun.','距離太陽 1.082 億公里。'],['Year:','225 Earth days.','225 個地球日。'],
       ['Temperature:','Around 465 °C — the hottest planet in the Solar System.','約 465 °C，是太陽系中最熱的行星。'],
       ['Atmosphere:','Extremely dense, mostly carbon dioxide, with clouds of sulfuric acid.','大氣極為濃密，主要成分為二氧化碳，並有硫酸雲。']]}
@@ -294,7 +289,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     "next": "Jupiter",
     "number": "[05]",
     "background": "mercury-background",
-    "approach": "assets/mercury-descent.mp4",
+    "approach": "assets/mercury-descent.mp4?v=topdown-20260925",
     "facts": [
       [
         "Distance:",
@@ -317,14 +312,14 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
         "稀薄外氣層：氧、鈉、氫、氦、鉀"
       ]
     ],
-    "portal": "assets/jupiter-descent.mp4"
+    "portal": "assets/jupiter-descent.mp4?v=topdown-20260925"
   },
   "jupiter": {
     "name": "Jupiter",
     "next": "Saturn",
     "number": "[06]",
     "background": "jupiter-background",
-    "approach": "assets/jupiter-descent.mp4",
+    "approach": "assets/jupiter-descent.mp4?v=topdown-20260925",
     "facts": [
       [
         "Distance:",
@@ -347,14 +342,14 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
         "主要為氫與氦"
       ]
     ],
-    "portal": "assets/saturn-descent.mp4"
+    "portal": "assets/saturn-descent.mp4?v=topdown-20260925"
   },
   "saturn": {
     "name": "Saturn",
     "next": "Uranus",
     "number": "[07]",
     "background": "saturn-background",
-    "approach": "assets/saturn-descent.mp4",
+    "approach": "assets/saturn-descent.mp4?v=topdown-20260925",
     "facts": [
       [
         "Distance:",
@@ -377,14 +372,14 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
         "主要為氫與氦"
       ]
     ],
-    "portal": "assets/uranus-descent.mp4"
+    "portal": "assets/uranus-descent.mp4?v=topdown-20260925"
   },
   "uranus": {
     "name": "Uranus",
     "next": "Neptune",
     "number": "[08]",
     "background": "uranus-background",
-    "approach": "assets/uranus-descent.mp4",
+    "approach": "assets/uranus-descent.mp4?v=topdown-20260925",
     "facts": [
       [
         "Distance:",
@@ -407,14 +402,14 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
         "主要為氫、氦；少量甲烷"
       ]
     ],
-    "portal": "assets/neptune-descent.mp4"
+    "portal": "assets/neptune-descent.mp4?v=topdown-20260925"
   },
   "neptune": {
     "name": "Neptune",
     "next": "Mars",
     "number": "[04]",
     "background": "neptune-background",
-    "approach": "assets/neptune-descent.mp4",
+    "approach": "assets/neptune-descent.mp4?v=topdown-20260925",
     "facts": [
       [
         "Distance:",
@@ -437,12 +432,12 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
         "主要為氫、氦；少量甲烷"
       ]
     ],
-    "portal": "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/5fc5651c-3b5d-4171-b507-87f7e635d1b4.mp4"
+    "portal": "assets/mars-descent.mp4?v=topdown-20260925"
   }
 });
   const $=selector=>document.querySelector(selector);
   const experience=$('.experience'),portal=$('#portal'),portalVideo=$('#portal-video');
-  const portalImage=$('#portal-image'),transitionVideo=$('#transition-video');
+  const transitionVideo=$('#transition-video');
   const canvas=$('#portal-canvas'),sceneCanvas=$('#scene-canvas');
   const ctx=canvas.getContext('2d'),sceneCtx=sceneCanvas.getContext('2d');
   const cursor=$('.custom-cursor'),motion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -498,13 +493,9 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
       item.textContent=name;item.append(nameZh);item.setAttribute('aria-pressed',String(name===state.name));if(name===state.name)item.setAttribute('aria-current','true');return item;
     }));
     if(hasRendered)retrigger(list,'is-switching');hasRendered=true;
-    document.querySelectorAll('.background').forEach(media=>{media.classList.toggle('is-visible',media.id===state.background);if(media instanceof HTMLVideoElement)media.pause()});
-    portalImage.hidden=!state.image;portalVideo.hidden=Boolean(state.image);
-    if(state.image){portalImage.src=state.image;portalImage.alt=state.next+' · '+planetNamesZh[state.next];portalVideo.pause()}
-    else{
-      if(portalVideo.getAttribute('src')!==state.portal){portalVideo.src=state.portal;portalVideo.load()}
-      if(!motion.matches)portalVideo.play().catch(()=>{});else portalVideo.pause();
-    }
+    document.querySelectorAll('.background').forEach(media=>media.classList.toggle('is-visible',media.id===state.background));
+    if(portalVideo.getAttribute('src')!==state.portal){portalVideo.src=state.portal;portalVideo.load()}
+    if(!motion.matches)portalVideo.play().catch(()=>{});else portalVideo.pause();
     setBusy(busy);cursor.classList.remove('is-enter');fitTitle();
   }
 
@@ -562,7 +553,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     if(w>1&&h>1){
       projectedPath(w,h,90*(1-e)*scale,rotX*(1-e),rotY*(1-e),cx,cy);
       ctx.save();ctx.globalAlpha=canvasOpacity;ctx.clip();ctx.fillStyle='#030303';ctx.fillRect(0,0,innerWidth,innerHeight);
-      drawCover(ctx,transitionActive?transitionMedia:(states[current].image?portalImage:portalVideo));
+      drawCover(ctx,transitionActive?transitionMedia:portalVideo);
       if(transitionActive)drawShade(ctx);ctx.restore();
     }requestAnimationFrame(draw);
   }
@@ -578,7 +569,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   function revealMask(){retrigger(experience,'mask-revealing');maskScale=0;return animateValue(v=>{maskScale=v},1050)}
   function revealPlanetContent(){retrigger(experience,'content-revealing')}
   async function startExperience(){
-    await mediaReady(states[current].image?portalImage:portalVideo);await revealMask();document.body.classList.add('intro-ready');
+    await mediaReady(portalVideo);await revealMask();document.body.classList.add('intro-ready');
     await pause(motion.matches?0:850);revealPlanetContent();setBusy(false);
   }
   function videoFinished(video){
@@ -612,7 +603,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
       await mediaReady(transitionVideo,1600,'canplaythrough');transitionMedia=transitionVideo;
       experience.classList.remove('is-loading','content-revealing','mask-revealing');experience.classList.add('is-transitioning');
       canvasOpacity=1;transitionActive=true;
-      transitionVideo.currentTime=0;transitionVideo.playbackRate=states[next].approach.startsWith('assets/')?1:1.3;
+      transitionVideo.currentTime=0;transitionVideo.playbackRate=1;
       if(motion.matches){
         await mediaReady(transitionVideo,4000);if(transitionVideo.readyState<2)throw new Error('Destination unavailable');
         await holdFinalFrame(transitionVideo);expansion=1;
@@ -646,7 +637,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     }
     function play(){
       if(started||finished)return;started=true;if(motion.matches||!Number.isFinite(video.duration)){finish();return}
-      video.playbackRate=Math.max(.25,video.duration/3);video.play().catch(finish);
+      video.playbackRate=1;video.play().catch(finish);
     }
     function update(){if(finished)return;if(Number.isFinite(video.duration)&&video.duration>0)value.textContent=String(Math.round(video.currentTime/video.duration*100));requestAnimationFrame(update)}
     video.addEventListener('ended',finish,{once:true});video.addEventListener('error',finish,{once:true});video.addEventListener('loadedmetadata',play,{once:true});
@@ -666,8 +657,8 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   portal.addEventListener('pointerleave',()=>cursor.classList.remove('is-enter'));portal.addEventListener('click',travel);
   window.addEventListener('resize',()=>{resizeCanvas();fitTitle()});
   document.fonts.ready.then(fitTitle);
-  motion.addEventListener('change',()=>{targetX=targetY=rotX=rotY=0;if(motion.matches)portalVideo.pause();else if(!states[current].image)portalVideo.play().catch(()=>{})});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)portalVideo.pause();else if(!motion.matches&&!states[current].image)portalVideo.play().catch(()=>{})});
+  motion.addEventListener('change',()=>{targetX=targetY=rotX=rotY=0;if(motion.matches)portalVideo.pause();else portalVideo.play().catch(()=>{})});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)portalVideo.pause();else if(!motion.matches)portalVideo.play().catch(()=>{})});
   const menu=$('.menu'),nav=$('.nav'),narrowMenu=matchMedia('(max-width: 900px)');
   const planetList=$('.planet-list'),planetsLink=nav.querySelector('[href="#planets"]');
   function setPlanetPicker(open){planetList.classList.toggle('is-open',open&&innerWidth<=640);planetsLink.setAttribute('aria-expanded',String(open&&innerWidth<=640))}
@@ -684,7 +675,6 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&(planetList.classList.contains('is-open')||(narrowMenu.matches&&menu.getAttribute('aria-expanded')==='true'))){setPlanetPicker(false);setMenu(false);menu.focus()}});
   document.addEventListener('click',event=>{if(!planetList.contains(event.target)&&!nav.contains(event.target)&&!menu.contains(event.target))setPlanetPicker(false)});
   portalVideo.loop=true;
-  document.querySelectorAll('video.background').forEach(video=>{video.pause();video.currentTime=0});
   resizeCanvas();render();requestAnimationFrame(draw);requestAnimationFrame(cursorLoop);runPreloader();
 })();
 
