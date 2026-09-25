@@ -164,7 +164,11 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
 .zh{font-family:'SF Pro',Arial,sans-serif;font-size:.82em;font-weight:400;letter-spacing:0;opacity:.8}
 .nav .zh,.menu .zh,.planet-item .zh,.portal-heading .zh{margin-left:6px;white-space:nowrap}
 .nav a{padding:8px 14px}
-.planet-item{gap:6px}
+.planet-item{gap:6px;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.planet-item:disabled{opacity:.4;color:rgba(255,255,255,.4);text-shadow:none;cursor:wait!important}
+.planet-item:not(:disabled):hover{color:#fff;text-shadow:0 0 12px rgba(255,255,255,.55)}
+.portal:disabled{cursor:wait!important}
+.experience.has-error .loading{opacity:1;max-width:calc(100% - 36px);padding:10px 14px;background:rgba(9,8,7,.9);border-radius:12px;letter-spacing:0;text-transform:none;text-align:center}
 .planet-title-en{display:inline-block}
 .planet-title-zh{display:block;margin-top:20px;font:24px/1.2 'SF Pro',Arial,sans-serif;letter-spacing:.18em;opacity:.85}
 .planet-content dl{font-size:14px;line-height:1.3}
@@ -182,6 +186,10 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   .portal-heading{font-size:14px}
 }
 @media(max-width:640px){
+  .planet-list.is-open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;position:fixed;left:18px;right:18px;top:84px;transform:none;z-index:15;padding:16px;border:1px solid rgba(255,255,255,.35);border-radius:20px;background:rgba(9,8,7,.96);animation:none;opacity:1}
+  .planet-list.is-open .planet-item{min-height:44px;padding:6px;font-size:14px;border-radius:8px}
+  .planet-list.is-open .planet-item.active{background:rgba(255,255,255,.12)}
+  .planet-list.is-open .planet-item.active:before{width:8px;height:8px;flex:none}
   .planet-content dl{font-size:12.5px;line-height:1.25}
   .nav a{padding:8px 9px;font-size:14px;white-space:nowrap}
   .fact{grid-template-columns:76px 1fr;gap:9px;padding:5px 0}
@@ -199,6 +207,11 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
 <body>
 <main class="experience" data-planet="mars">
   <div class="backgrounds" aria-hidden="true">
+    <img id="mercury-background" class="background" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d6fb8b6b-c15e-4aaa-9cf7-45bbb5e33372.jpg" alt="">
+    <img id="jupiter-background" class="background" src="https://science.nasa.gov/wp-content/uploads/2024/03/jupiter-marble-pia22946-16x9-1.jpg?resize=900,506" alt="">
+    <img id="saturn-background" class="background" src="https://science.nasa.gov/wp-content/uploads/2024/03/saturn-farewell-pia21345.jpg?resize=900,466" alt="">
+    <img id="uranus-background" class="background" src="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/general/images/2024/03/uranus-pia18182-16x9-1.jpg?w=900&amp;h=506&amp;fit=crop&amp;crop=faces%2Cfocalpoint" alt="">
+    <img id="neptune-background" class="background" src="https://science.nasa.gov/wp-content/uploads/2024/03/pia01492-neptune-full-disk-16x9-1.jpg?resize=900,506" alt="">
     <video id="mars-background"  class="background is-visible" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/3c83091e-4046-4fd6-adbb-2edb728be79a.mp4" muted playsinline preload="auto"></video>
     <video id="earth-background" class="background"            src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4" muted playsinline preload="auto"></video>
     <video id="venus-background" class="background"            src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b30f64d9-1637-477a-83df-d0fc6461a422.mp4" muted playsinline preload="auto"></video>
@@ -218,13 +231,13 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     <span class="brand-name">Hey World</span>
     <div class="header-actions">
       <nav class="nav" id="primary-nav" aria-label="Primary navigation · 主要導覽">
-        <a class="active" href="#about">About<span class="zh">關於</span></a><a href="#explore">Explore<span class="zh">探索</span></a><a href="#planets">Planets<span class="zh">行星</span></a>
+        <a class="active" href="#about">About<span class="zh">關於</span></a><a href="#explore">Explore<span class="zh">探索</span></a><a href="#planets" aria-controls="planet-list" aria-expanded="false">Planets<span class="zh">行星</span></a>
       </nav>
       <button class="menu" type="button" aria-controls="primary-nav" aria-expanded="false">Menu<span class="zh">選單</span></button>
     </div>
   </header>
 
-  <aside class="planet-list chrome" aria-label="Planets · 行星"></aside>
+  <aside class="planet-list chrome" id="planet-list" aria-label="Planets · 行星"></aside>
 
   <canvas id="portal-canvas" class="portal-canvas" aria-hidden="true"></canvas>
   <section class="portal-wrap chrome" aria-label="Next destination · 下一個目的地">
@@ -244,7 +257,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   </section>
 
   <div class="transition-layer" aria-hidden="true"><video id="transition-video" muted playsinline preload="auto"></video></div>
-  <div class="loading" aria-hidden="true">Preparing orbit…<span class="zh">正在準備軌道…</span></div>
+  <div class="loading" role="status" aria-live="polite">Preparing orbit…<span class="zh">正在準備軌道…</span></div>
   <div class="custom-cursor" aria-hidden="true">
     <span class="cursor-orbit"></span><span class="cursor-dot"></span><span class="cursor-label">Enter<span class="zh">進入</span></span>
   </div>
@@ -270,11 +283,158 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
       ['Distance:','149.6 million km from the Sun.','距離太陽 1.496 億公里。'],['Year:','365.25 Earth days.','365.25 個地球日。'],
       ['Temperature:','Average surface temperature around 15 °C.','平均地表溫度約 15 °C。'],
       ['Atmosphere:','Mostly nitrogen and oxygen, supporting life and liquid water.','主要由氮氣與氧氣組成，支持生命與液態水的存在。']]},
-    venus:{name:'Venus',next:'Mercury',number:'[06]',image:MERCURY,background:'venus-background',facts:[
+    venus:{name:'Venus',next:'Mercury',number:'[01]',image:MERCURY,background:'venus-background',facts:[
       ['Distance:','108.2 million km from the Sun.','距離太陽 1.082 億公里。'],['Year:','225 Earth days.','225 個地球日。'],
       ['Temperature:','Around 465 °C — the hottest planet in the Solar System.','約 465 °C，是太陽系中最熱的行星。'],
       ['Atmosphere:','Extremely dense, mostly carbon dioxide, with clouds of sulfuric acid.','大氣極為濃密，主要成分為二氧化碳，並有硫酸雲。']]}
   };
+  Object.assign(states,{
+  "mercury": {
+    "name": "Mercury",
+    "next": "Jupiter",
+    "number": "[05]",
+    "background": "mercury-background",
+    "facts": [
+      [
+        "Distance:",
+        "58 million km (mean)",
+        "5,800 萬公里（平均）"
+      ],
+      [
+        "Year:",
+        "88 Earth days",
+        "88 個地球日"
+      ],
+      [
+        "Temperature:",
+        "167°C · mean surface",
+        "167°C・平均地表溫度"
+      ],
+      [
+        "Atmosphere:",
+        "Thin exosphere: O, Na, H, He, K",
+        "稀薄外氣層：氧、鈉、氫、氦、鉀"
+      ]
+    ],
+    "image": "https://science.nasa.gov/wp-content/uploads/2024/03/jupiter-marble-pia22946-16x9-1.jpg?resize=900,506"
+  },
+  "jupiter": {
+    "name": "Jupiter",
+    "next": "Saturn",
+    "number": "[06]",
+    "background": "jupiter-background",
+    "facts": [
+      [
+        "Distance:",
+        "778 million km (mean)",
+        "7.78 億公里（平均）"
+      ],
+      [
+        "Year:",
+        "About 4,333 Earth days",
+        "約 4,333 個地球日"
+      ],
+      [
+        "Temperature:",
+        "−110°C · mean atmosphere (~1 bar)",
+        "−110°C・約 1 bar 大氣層平均"
+      ],
+      [
+        "Atmosphere:",
+        "Mostly hydrogen and helium",
+        "主要為氫與氦"
+      ]
+    ],
+    "image": "https://science.nasa.gov/wp-content/uploads/2024/03/saturn-farewell-pia21345.jpg?resize=900,466"
+  },
+  "saturn": {
+    "name": "Saturn",
+    "next": "Uranus",
+    "number": "[07]",
+    "background": "saturn-background",
+    "facts": [
+      [
+        "Distance:",
+        "1.4 billion km (mean)",
+        "14 億公里（平均）"
+      ],
+      [
+        "Year:",
+        "About 29.4 Earth years",
+        "約 29.4 個地球年"
+      ],
+      [
+        "Temperature:",
+        "−140°C · mean atmosphere (~1 bar)",
+        "−140°C・約 1 bar 大氣層平均"
+      ],
+      [
+        "Atmosphere:",
+        "Mostly hydrogen and helium",
+        "主要為氫與氦"
+      ]
+    ],
+    "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/general/images/2024/03/uranus-pia18182-16x9-1.jpg?w=900&h=506&fit=crop&crop=faces%2Cfocalpoint"
+  },
+  "uranus": {
+    "name": "Uranus",
+    "next": "Neptune",
+    "number": "[08]",
+    "background": "uranus-background",
+    "facts": [
+      [
+        "Distance:",
+        "2.9 billion km (mean)",
+        "29 億公里（平均）"
+      ],
+      [
+        "Year:",
+        "About 84 Earth years",
+        "約 84 個地球年"
+      ],
+      [
+        "Temperature:",
+        "−195°C · mean atmosphere (~1 bar)",
+        "−195°C・約 1 bar 大氣層平均"
+      ],
+      [
+        "Atmosphere:",
+        "Hydrogen, helium; some methane",
+        "主要為氫、氦；少量甲烷"
+      ]
+    ],
+    "image": "https://science.nasa.gov/wp-content/uploads/2024/03/pia01492-neptune-full-disk-16x9-1.jpg?resize=900,506"
+  },
+  "neptune": {
+    "name": "Neptune",
+    "next": "Mars",
+    "number": "[04]",
+    "background": "neptune-background",
+    "facts": [
+      [
+        "Distance:",
+        "4.5 billion km (mean)",
+        "45 億公里（平均）"
+      ],
+      [
+        "Year:",
+        "About 165 Earth years",
+        "約 165 個地球年"
+      ],
+      [
+        "Temperature:",
+        "−200°C · mean atmosphere (~1 bar)",
+        "−200°C・約 1 bar 大氣層平均"
+      ],
+      [
+        "Atmosphere:",
+        "Hydrogen, helium; some methane",
+        "主要為氫、氦；少量甲烷"
+      ]
+    ],
+    "portal": "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/5fc5651c-3b5d-4171-b507-87f7e635d1b4.mp4"
+  }
+});
   const $=selector=>document.querySelector(selector);
   const experience=$('.experience'),portal=$('#portal'),portalVideo=$('#portal-video');
   const portalImage=$('#portal-image'),transitionVideo=$('#transition-video');
@@ -283,11 +443,18 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   const cursor=$('.custom-cursor'),motion=matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
   let current='mars',busy=true,hasRendered=false,transitionActive=false,frozenScene=false;
+  let transitionMedia=null;
   let expansion=0,maskScale=0,canvasOpacity=1,targetX=0,targetY=0,rotX=0,rotY=0;
   let pointerX=innerWidth/2,pointerY=innerHeight/2,cursorX=pointerX,cursorY=pointerY,previousTime=0;
   const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   const frame=()=>new Promise(resolve=>requestAnimationFrame(resolve));
   function retrigger(element,name){element.classList.remove(name);void element.offsetWidth;element.classList.add(name)}
+  function setBusy(value){
+    busy=value;experience.setAttribute('aria-busy',String(value));
+    $('.planet-list').setAttribute('aria-busy',String(value));
+    document.querySelectorAll('.planet-item').forEach(button=>{button.disabled=value});
+    portal.disabled=value;portal.setAttribute('aria-disabled',String(value));
+  }
 
   function fitTitle(){
     const title=$('#planet-title'),content=$('.planet-content'),facts=$('#facts');
@@ -313,7 +480,6 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     $('#next-name').textContent=state.next;$('#next-number').textContent=state.number;
     $('#next-name-zh').textContent=planetNamesZh[state.next];
     portal.setAttribute('aria-label','Travel to '+state.next+' · 前往'+planetNamesZh[state.next]);
-    portal.setAttribute('aria-disabled',String(current==='venus'));
     $('#facts').replaceChildren(...state.facts.map(([key,value,valueZh])=>{
       const fact=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');
       const labelZh=document.createElement('span'),descriptionZh=document.createElement('span');
@@ -322,19 +488,19 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     }));
     const list=$('.planet-list');
     list.replaceChildren(...planets.map(name=>{
-      const item=document.createElement('span');item.className='planet-item'+(name===state.name?' active':'');
+      const item=document.createElement('button');item.type='button';item.dataset.planet=name.toLowerCase();item.className='planet-item'+(name===state.name?' active':'');
       const nameZh=document.createElement('span');nameZh.className='zh';nameZh.textContent=planetNamesZh[name];
-      item.textContent=name;item.append(nameZh);if(name===state.name)item.setAttribute('aria-current','true');return item;
+      item.textContent=name;item.append(nameZh);item.setAttribute('aria-pressed',String(name===state.name));if(name===state.name)item.setAttribute('aria-current','true');return item;
     }));
     if(hasRendered)retrigger(list,'is-switching');hasRendered=true;
-    document.querySelectorAll('.background').forEach(v=>{v.classList.toggle('is-visible',v.id===state.background);v.pause()});
+    document.querySelectorAll('.background').forEach(media=>{media.classList.toggle('is-visible',media.id===state.background);if(media instanceof HTMLVideoElement)media.pause()});
     portalImage.hidden=!state.image;portalVideo.hidden=Boolean(state.image);
-    if(state.image){portalImage.src=state.image;portalVideo.pause()}
+    if(state.image){portalImage.src=state.image;portalImage.alt=state.next+' · '+planetNamesZh[state.next];portalVideo.pause()}
     else{
       if(portalVideo.getAttribute('src')!==state.portal){portalVideo.src=state.portal;portalVideo.load()}
       if(!motion.matches)portalVideo.play().catch(()=>{});else portalVideo.pause();
     }
-    cursor.classList.remove('is-enter');fitTitle();
+    setBusy(busy);cursor.classList.remove('is-enter');fitTitle();
   }
 
   function mediaReady(media,timeout=6000,event='canplay'){
@@ -391,7 +557,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     if(w>1&&h>1){
       projectedPath(w,h,90*(1-e)*scale,rotX*(1-e),rotY*(1-e),cx,cy);
       ctx.save();ctx.globalAlpha=canvasOpacity;ctx.clip();ctx.fillStyle='#030303';ctx.fillRect(0,0,innerWidth,innerHeight);
-      drawCover(ctx,transitionActive?transitionVideo:(states[current].image?portalImage:portalVideo));
+      drawCover(ctx,transitionActive?transitionMedia:(states[current].image?portalImage:portalVideo));
       if(transitionActive)drawShade(ctx);ctx.restore();
     }requestAnimationFrame(draw);
   }
@@ -408,7 +574,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   function revealPlanetContent(){retrigger(experience,'content-revealing')}
   async function startExperience(){
     await mediaReady(states[current].image?portalImage:portalVideo);await revealMask();document.body.classList.add('intro-ready');
-    await pause(motion.matches?0:850);revealPlanetContent();busy=false;
+    await pause(motion.matches?0:850);revealPlanetContent();setBusy(false);
   }
   function videoFinished(video){
     let cancel;const promise=new Promise(resolve=>{
@@ -427,33 +593,52 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
       video.addEventListener('seeked',done,{once:true});video.currentTime=Math.max(0,video.duration-.04);
     });
   }
-  async function travel(){
-    if(busy||current==='venus')return;busy=true;targetX=targetY=0;cursor.classList.remove('is-enter');
-    const next=current==='mars'?'earth':'venus';let completion;
+  async function selectPlanet(next,fromPortal=false){
+    if(busy||!states[next]||next===current)return;
+    const restoreFocus=document.activeElement?.closest('.planet-item');
+    setBusy(true);setPlanetPicker(false);targetX=targetY=0;cursor.classList.remove('is-enter');
+    const cinematic=fromPortal&&((current==='mars'&&next==='earth')||(current==='earth'&&next==='venus'));
+    let completion;
     try{
-      transitionVideo.src=states[current].portal;transitionVideo.load();experience.classList.add('is-loading');
-      await mediaReady(transitionVideo,1600,'canplaythrough');
-      experience.classList.remove('is-loading','content-revealing','mask-revealing');experience.classList.add('is-transitioning');
-      transitionVideo.currentTime=0;transitionVideo.playbackRate=1.3;canvasOpacity=1;transitionActive=true;
-      if(motion.matches){
-        await mediaReady(transitionVideo,4000);if(transitionVideo.readyState<2)throw new Error('Destination unavailable');
-        await holdFinalFrame(transitionVideo);expansion=1;
+      experience.classList.remove('has-error');$('.loading').textContent='Preparing orbit… · 正在準備軌道…';experience.classList.add('is-loading');
+      if(cinematic){
+        transitionVideo.src=states[current].portal;transitionVideo.load();
+        await mediaReady(transitionVideo,1600,'canplaythrough');transitionMedia=transitionVideo;
       }else{
-        completion=videoFinished(transitionVideo);
-        await Promise.race([transitionVideo.play(),completion.promise.then(ok=>{if(!ok)throw new Error('Destination video did not start')})]);
-        await animateValue(v=>{expansion=v},1100);if(!await completion.promise)throw new Error('Destination video did not finish');
+        transitionMedia=document.getElementById(states[next].background);
+        if(!await mediaReady(transitionMedia,8000))throw new Error('Destination unavailable');
+        if(transitionMedia instanceof HTMLVideoElement){transitionMedia.pause();await holdFinalFrame(transitionMedia)}
       }
-      frozenScene=false;resizeCanvas();sceneCtx.clearRect(0,0,innerWidth,innerHeight);frozenScene=drawCover(sceneCtx,transitionVideo);
+      experience.classList.remove('is-loading','content-revealing','mask-revealing');experience.classList.add('is-transitioning');
+      canvasOpacity=1;transitionActive=true;
+      if(cinematic){
+        transitionVideo.currentTime=0;transitionVideo.playbackRate=1.3;
+        if(motion.matches){
+          await mediaReady(transitionVideo,4000);if(transitionVideo.readyState<2)throw new Error('Destination unavailable');
+          await holdFinalFrame(transitionVideo);expansion=1;
+        }else{
+          completion=videoFinished(transitionVideo);
+          await Promise.race([transitionVideo.play(),completion.promise.then(ok=>{if(!ok)throw new Error('Destination video did not start')})]);
+          await animateValue(v=>{expansion=v},1100);if(!await completion.promise)throw new Error('Destination video did not finish');
+        }
+      }else{
+        await animateValue(v=>{expansion=v},650);
+      }
+      frozenScene=false;resizeCanvas();sceneCtx.clearRect(0,0,innerWidth,innerHeight);frozenScene=drawCover(sceneCtx,transitionMedia);
+      $('#preloader').classList.add('is-unavailable');
       current=next;experience.classList.add('is-committing');render();await frame();await frame();
       transitionActive=false;expansion=0;maskScale=0;canvasOpacity=1;experience.classList.remove('is-transitioning','is-committing');
       const maskReveal=revealMask();setTimeout(revealPlanetContent,motion.matches?0:100);await maskReveal;await pause(motion.matches?0:450);
     }catch{
       transitionActive=false;expansion=0;maskScale=1;canvasOpacity=1;experience.classList.remove('is-loading','is-transitioning','is-committing');
+      $('.loading').textContent='Unable to load '+states[next].name+'. Try again. · 無法載入'+planetNamesZh[states[next].name]+'，請再試一次。';experience.classList.add('has-error');
       retrigger(experience,'mask-revealing');revealPlanetContent();
     }finally{
-      if(completion)completion.cancel();transitionVideo.pause();transitionVideo.removeAttribute('src');transitionVideo.load();busy=false;
+      if(completion)completion.cancel();transitionVideo.pause();transitionVideo.removeAttribute('src');transitionVideo.load();transitionMedia=null;setBusy(false);
+      if(restoreFocus){if(innerWidth<=640)menu.focus({preventScroll:true});else $('.planet-item[data-planet="'+current+'"]').focus({preventScroll:true})}
     }
   }
+  function travel(){return selectPlanet(states[current].next.toLowerCase(),true)}
   function runPreloader(){
     const video=$('#preloader-video'),preloader=$('#preloader'),counter=$('#preloader-count'),value=$('#preloader-value'),logo=$('#floating-logo');
     let finished=false,started=false;const safetyTimer=setTimeout(finish,12000);
@@ -480,24 +665,29 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   });
   const leavePointer=()=>{targetX=targetY=0;cursor.classList.remove('is-visible','is-enter')};
   document.addEventListener('mouseleave',leavePointer);document.documentElement.addEventListener('pointerleave',leavePointer);
-  portal.addEventListener('pointerenter',()=>{if(!busy&&current!=='venus'&&finePointer.matches)cursor.classList.add('is-enter')});
+  portal.addEventListener('pointerenter',()=>{if(!busy&&finePointer.matches)cursor.classList.add('is-enter')});
   portal.addEventListener('pointerleave',()=>cursor.classList.remove('is-enter'));portal.addEventListener('click',travel);
   window.addEventListener('resize',()=>{resizeCanvas();fitTitle()});
   document.fonts.ready.then(fitTitle);
   motion.addEventListener('change',()=>{targetX=targetY=rotX=rotY=0;if(motion.matches)portalVideo.pause();else if(!states[current].image)portalVideo.play().catch(()=>{})});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)portalVideo.pause();else if(!motion.matches&&!states[current].image)portalVideo.play().catch(()=>{})});
   const menu=$('.menu'),nav=$('.nav'),narrowMenu=matchMedia('(max-width: 900px)');
+  const planetList=$('.planet-list'),planetsLink=nav.querySelector('[href="#planets"]');
+  function setPlanetPicker(open){planetList.classList.toggle('is-open',open&&innerWidth<=640);planetsLink.setAttribute('aria-expanded',String(open&&innerWidth<=640))}
+  planetList.addEventListener('click',event=>{const button=event.target.closest('.planet-item');if(button)selectPlanet(button.dataset.planet)});
   function setMenu(open){nav.classList.toggle('is-open',open);nav.classList.toggle('is-closed',!open);menu.setAttribute('aria-expanded',String(open))}
-  setMenu(!narrowMenu.matches);menu.addEventListener('click',()=>setMenu(menu.getAttribute('aria-expanded')!=='true'));
+  setMenu(!narrowMenu.matches);menu.addEventListener('click',()=>{setPlanetPicker(false);setMenu(menu.getAttribute('aria-expanded')!=='true')});
   narrowMenu.addEventListener('change',event=>setMenu(!event.matches));
   nav.addEventListener('click',event=>{
     const link=event.target.closest('a');if(!link)return;event.preventDefault();
     nav.querySelectorAll('a').forEach(item=>item.classList.toggle('active',item===link));if(narrowMenu.matches)setMenu(false);
     if(link.hash==='#explore')portal.focus({preventScroll:true});
+    if(link.hash==='#planets'){setPlanetPicker(true);$('.planet-item.active').focus({preventScroll:true})}
   });
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&narrowMenu.matches&&menu.getAttribute('aria-expanded')==='true'){setMenu(false);menu.focus()}});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&(planetList.classList.contains('is-open')||(narrowMenu.matches&&menu.getAttribute('aria-expanded')==='true'))){setPlanetPicker(false);setMenu(false);menu.focus()}});
+  document.addEventListener('click',event=>{if(!planetList.contains(event.target)&&!nav.contains(event.target)&&!menu.contains(event.target))setPlanetPicker(false)});
   portalVideo.loop=true;
-  document.querySelectorAll('.background').forEach(video=>{video.pause();video.currentTime=0});
+  document.querySelectorAll('video.background').forEach(video=>{video.pause();video.currentTime=0});
   resizeCanvas();render();requestAnimationFrame(draw);requestAnimationFrame(cursorLoop);runPreloader();
 })();
 
