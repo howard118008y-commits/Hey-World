@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -161,6 +161,39 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
 @media(hover:none),(pointer:coarse){html,body,button,a,.portal{cursor:auto!important}.custom-cursor{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0ms!important}}
 
+.zh{font-family:'SF Pro',Arial,sans-serif;font-size:.82em;font-weight:400;letter-spacing:0;opacity:.8}
+.nav .zh,.menu .zh,.planet-item .zh,.portal-heading .zh{margin-left:6px;white-space:nowrap}
+.nav a{padding:8px 14px}
+.planet-item{gap:6px}
+.planet-title-en{display:inline-block}
+.planet-title-zh{display:block;margin-top:20px;font:24px/1.2 'SF Pro',Arial,sans-serif;letter-spacing:.18em;opacity:.85}
+.planet-content dl{font-size:14px;line-height:1.3}
+.fact{grid-template-columns:110px 1fr;gap:14px;padding:7px 0}
+.fact .zh{display:block;margin-top:3px;font-size:12.5px;line-height:1.35}
+.fact dt .zh{font-size:12px}
+.cursor-label .zh{margin-left:5px}
+.loading .zh{margin-left:8px;letter-spacing:0;text-transform:none}
+@media(max-width:900px){
+  .planet-content dl{font-size:13px}
+  .header{z-index:6}
+  .nav.is-open{background:rgba(9,8,7,.94)}
+  .fact{grid-template-columns:86px 1fr;gap:10px}
+  .planet-title-zh{font-size:22px}
+  .portal-heading{font-size:14px}
+}
+@media(max-width:640px){
+  .planet-content dl{font-size:12.5px;line-height:1.25}
+  .nav a{padding:8px 9px;font-size:14px;white-space:nowrap}
+  .fact{grid-template-columns:76px 1fr;gap:9px;padding:5px 0}
+  .fact .zh{font-size:12px;line-height:1.3;margin-top:2px}
+  .fact dt .zh{font-size:11.5px}
+  .planet-title-zh{font-size:20px;margin-top:12px}
+  .portal-heading{font-size:12px;align-items:flex-end;gap:8px;width:max(100%,210px);margin-left:min(0px,calc((100% - 210px)/2))}
+  .portal-heading strong{font-size:14px;margin-left:4px}
+  .portal-heading>span:first-child .zh{display:block;margin:3px 0 0}
+  .portal-heading .zh{font-size:12px}
+  .menu{padding:0 15px}
+}
 </style>
 </head>
 <body>
@@ -170,7 +203,7 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     <video id="earth-background" class="background"            src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4" muted playsinline preload="auto"></video>
     <video id="venus-background" class="background"            src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b30f64d9-1637-477a-83df-d0fc6461a422.mp4" muted playsinline preload="auto"></video>
   </div>
-  <div class="preloader" id="preloader" aria-label="Loading Mars">
+  <div class="preloader" id="preloader" aria-label="Loading Mars · 正在載入火星">
     <video id="preloader-video" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/5fc5651c-3b5d-4171-b507-87f7e635d1b4.mp4" muted playsinline preload="auto"></video>
     <div class="preloader-shade"></div>
   </div>
@@ -184,36 +217,36 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   <header class="header chrome">
     <span class="brand-name">Hey World</span>
     <div class="header-actions">
-      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <a class="active" href="#about">About</a><a href="#explore">Explore</a><a href="#planets">Planets</a>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation · 主要導覽">
+        <a class="active" href="#about">About<span class="zh">關於</span></a><a href="#explore">Explore<span class="zh">探索</span></a><a href="#planets">Planets<span class="zh">行星</span></a>
       </nav>
-      <button class="menu" type="button" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+      <button class="menu" type="button" aria-controls="primary-nav" aria-expanded="false">Menu<span class="zh">選單</span></button>
     </div>
   </header>
 
-  <aside class="planet-list chrome" aria-label="Planets"></aside>
+  <aside class="planet-list chrome" aria-label="Planets · 行星"></aside>
 
   <canvas id="portal-canvas" class="portal-canvas" aria-hidden="true"></canvas>
-  <section class="portal-wrap chrome" aria-label="Next destination">
+  <section class="portal-wrap chrome" aria-label="Next destination · 下一個目的地">
     <div class="portal-heading">
-      <span>Next:</span>
-      <span><span id="next-number">[03]</span> <strong id="next-name">Earth</strong></span>
+      <span>Next:<span class="zh">下一站</span></span>
+      <span><span id="next-number">[03]</span> <strong id="next-name">Earth</strong><span class="zh" id="next-name-zh">地球</span></span>
     </div>
-    <button class="portal" id="portal" type="button" aria-label="Travel to Earth">
+    <button class="portal" id="portal" type="button" aria-label="Travel to Earth · 前往地球">
       <video id="portal-video" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4" muted playsinline preload="auto"></video>
-      <img id="portal-image" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d6fb8b6b-c15e-4aaa-9cf7-45bbb5e33372.jpg" alt="Mercury">
+      <img id="portal-image" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d6fb8b6b-c15e-4aaa-9cf7-45bbb5e33372.jpg" alt="Mercury · 水星">
     </button>
   </section>
 
   <section class="planet-content chrome" aria-live="polite">
-    <h1 id="planet-title">MARS</h1>
+    <h1 id="planet-title"><span class="planet-title-en">MARS</span><span class="planet-title-zh">火星</span></h1>
     <dl id="facts"></dl>
   </section>
 
   <div class="transition-layer" aria-hidden="true"><video id="transition-video" muted playsinline preload="auto"></video></div>
-  <div class="loading" aria-hidden="true">Preparing orbit…</div>
+  <div class="loading" aria-hidden="true">Preparing orbit…<span class="zh">正在準備軌道…</span></div>
   <div class="custom-cursor" aria-hidden="true">
-    <span class="cursor-orbit"></span><span class="cursor-dot"></span><span class="cursor-label">Enter</span>
+    <span class="cursor-orbit"></span><span class="cursor-dot"></span><span class="cursor-label">Enter<span class="zh">進入</span></span>
   </div>
 </main>
 <script>
@@ -225,20 +258,22 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
   const TO_VENUS=BASE+'/b30f64d9-1637-477a-83df-d0fc6461a422.mp4';
   const MERCURY=BASE+'/d6fb8b6b-c15e-4aaa-9cf7-45bbb5e33372.jpg';
   const planets=['Mercury','Venus','Earth','Mars','Jupiter','Saturn','Uranus','Neptune'];
+  const planetNamesZh={Mercury:'水星',Venus:'金星',Earth:'地球',Mars:'火星',Jupiter:'木星',Saturn:'土星',Uranus:'天王星',Neptune:'海王星'};
+  const factLabelsZh={'Distance:':'距離：','Year:':'一年：','Temperature:':'溫度：','Atmosphere:':'大氣：'};
   const states={
     mars:{name:'Mars',next:'Earth',number:'[03]',portal:TO_EARTH,background:'mars-background',facts:[
-      ['Distance:','About 228 million km (1.5 astronomical units).'],
-      ['Year:','One Martian year is equal to 687 Earth days.'],
-      ['Temperature:','Around -60 °C, dropping to -125 °C at the poles in winter.'],
-      ['Atmosphere:','Very thin, consisting of 95% carbon dioxide, with frequent dust storms.']]},
+      ['Distance:','About 228 million km (1.5 astronomical units).','約 2.28 億公里（1.5 天文單位）。'],
+      ['Year:','One Martian year is equal to 687 Earth days.','火星的一年相當於 687 個地球日。'],
+      ['Temperature:','Around -60 °C, dropping to -125 °C at the poles in winter.','約 −60 °C，兩極冬季可降至 −125 °C。'],
+      ['Atmosphere:','Very thin, consisting of 95% carbon dioxide, with frequent dust storms.','大氣非常稀薄，95% 為二氧化碳，沙塵暴頻繁。']]},
     earth:{name:'Earth',next:'Venus',number:'[02]',portal:TO_VENUS,background:'earth-background',facts:[
-      ['Distance:','149.6 million km from the Sun.'],['Year:','365.25 Earth days.'],
-      ['Temperature:','Average surface temperature around 15 °C.'],
-      ['Atmosphere:','Mostly nitrogen and oxygen, supporting life and liquid water.']]},
+      ['Distance:','149.6 million km from the Sun.','距離太陽 1.496 億公里。'],['Year:','365.25 Earth days.','365.25 個地球日。'],
+      ['Temperature:','Average surface temperature around 15 °C.','平均地表溫度約 15 °C。'],
+      ['Atmosphere:','Mostly nitrogen and oxygen, supporting life and liquid water.','主要由氮氣與氧氣組成，支持生命與液態水的存在。']]},
     venus:{name:'Venus',next:'Mercury',number:'[06]',image:MERCURY,background:'venus-background',facts:[
-      ['Distance:','108.2 million km from the Sun.'],['Year:','225 Earth days.'],
-      ['Temperature:','Around 465 °C — the hottest planet in the Solar System.'],
-      ['Atmosphere:','Extremely dense, mostly carbon dioxide, with clouds of sulfuric acid.']]}
+      ['Distance:','108.2 million km from the Sun.','距離太陽 1.082 億公里。'],['Year:','225 Earth days.','225 個地球日。'],
+      ['Temperature:','Around 465 °C — the hottest planet in the Solar System.','約 465 °C，是太陽系中最熱的行星。'],
+      ['Atmosphere:','Extremely dense, mostly carbon dioxide, with clouds of sulfuric acid.','大氣極為濃密，主要成分為二氧化碳，並有硫酸雲。']]}
   };
   const $=selector=>document.querySelector(selector);
   const experience=$('.experience'),portal=$('#portal'),portalVideo=$('#portal-video');
@@ -259,24 +294,37 @@ button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:5px}
     title.style.setProperty('--title-fit',1);
     const mobile=innerWidth<=640;
     const available=content.clientWidth-(mobile?0:facts.offsetWidth+40);
-    const width=title.getBoundingClientRect().width;
+    const width=$('.planet-title-en').getBoundingClientRect().width;
     title.style.setProperty('--title-fit',Math.min(1,Math.max(0.35,available/width)));
+    const wrap=$('.portal-wrap');wrap.style.removeProperty('width');wrap.style.removeProperty('top');
+    if(innerWidth<=900){
+      const headerBottom=$('.header').getBoundingClientRect().bottom;
+      const room=content.getBoundingClientRect().top-headerBottom-36;
+      const heading=$('.portal-heading').offsetHeight+12;
+      wrap.style.width=Math.min(wrap.offsetWidth,Math.max(80,(room-heading)*320/350))+'px';
+      wrap.style.top=(headerBottom+18+(room-wrap.offsetHeight)/2+wrap.offsetHeight*.54)+'px';
+    }
   }
 
   function render(){
     const state=states[current];experience.dataset.planet=current;
-    $('#planet-title').textContent=state.name.toUpperCase();
+    $('.planet-title-en').textContent=state.name.toUpperCase();
+    $('.planet-title-zh').textContent=planetNamesZh[state.name];
     $('#next-name').textContent=state.next;$('#next-number').textContent=state.number;
-    portal.setAttribute('aria-label','Travel to '+state.next);
+    $('#next-name-zh').textContent=planetNamesZh[state.next];
+    portal.setAttribute('aria-label','Travel to '+state.next+' · 前往'+planetNamesZh[state.next]);
     portal.setAttribute('aria-disabled',String(current==='venus'));
-    $('#facts').replaceChildren(...state.facts.map(([key,value])=>{
+    $('#facts').replaceChildren(...state.facts.map(([key,value,valueZh])=>{
       const fact=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');
-      fact.className='fact';dt.textContent=key;dd.textContent=value;fact.append(dt,dd);return fact;
+      const labelZh=document.createElement('span'),descriptionZh=document.createElement('span');
+      labelZh.className=descriptionZh.className='zh';labelZh.textContent=factLabelsZh[key];descriptionZh.textContent=valueZh;
+      fact.className='fact';dt.textContent=key;dd.textContent=value;dt.append(labelZh);dd.append(descriptionZh);fact.append(dt,dd);return fact;
     }));
     const list=$('.planet-list');
     list.replaceChildren(...planets.map(name=>{
       const item=document.createElement('span');item.className='planet-item'+(name===state.name?' active':'');
-      item.textContent=name;if(name===state.name)item.setAttribute('aria-current','true');return item;
+      const nameZh=document.createElement('span');nameZh.className='zh';nameZh.textContent=planetNamesZh[name];
+      item.textContent=name;item.append(nameZh);if(name===state.name)item.setAttribute('aria-current','true');return item;
     }));
     if(hasRendered)retrigger(list,'is-switching');hasRendered=true;
     document.querySelectorAll('.background').forEach(v=>{v.classList.toggle('is-visible',v.id===state.background);v.pause()});
