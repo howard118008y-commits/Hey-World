@@ -1,0 +1,43 @@
+{
+  "project": "Hey World",
+  "created": "2026-09-25",
+  "tool": "Built-in image_gen",
+  "note": "AI imagined environments, not footage of real planetary interiors. Gas and ice giants are shown within their cloud atmospheres, not on solid surfaces.",
+  "scenes": [
+    {
+      "planet": "mercury",
+      "artwork": "mercury-environment.png",
+      "animation": "mercury-descent.mp4",
+      "method": "Built-in image_gen artwork; cinematic camera animation rendered from imagery, not generative video.",
+      "prompt": "Create one cinematic photorealistic science-inspired environment matte for Hey World, an immersive planetary descent web experience. Landscape 16:9, 1920x1080. MERCURY near-ground view: camera floats 15 meters above a vast charcoal-gray crater floor looking toward jagged distant crater rims, sunlit pale mineral regolith and scattered angular rocks in the lower foreground. Black airless sky occupies upper 35 percent, small harsh distant Sun out of frame throws very long crisp shadows, subtle warm reflected light on stone, no atmospheric haze. Expansive deep perspective with middle distant ridges centered as the eventual descent target. Realistic geological granular detail, visually rich cinematic contrast, quiet empty horizon with room for website overlay. This is an imagined environment, not a labeled diagram. No people, buildings, spacecraft, plants, water, stars visible in daylight exposure, text, symbols, borders, collage or watermark. Output exactly one full-bleed scene."
+    },
+    {
+      "planet": "jupiter",
+      "artwork": "jupiter-environment.png",
+      "animation": "jupiter-descent.mp4",
+      "method": "Built-in image_gen artwork; cinematic camera animation rendered from imagery, not generative video.",
+      "prompt": "Create exactly one full-bleed cinematic photorealistic science-inspired environment artwork for Hey World planetary descent. Landscape 16:9, 1920x1080. Immersive first-person aerial camera INSIDE the planet's atmosphere looking across and down into layered clouds, horizon at upper third, dramatic depth, distant forms centered as target for a slow forward descending camera. Rich believable volume and scattering, elegant film still. This is an imagined cloud environment for a web experience. This planet has NO solid surface: all visible lower forms must be clearly soft gaseous clouds, no rocks, mountains, water, ground or frozen terrain. No spacecraft, characters, architecture, vegetation, text, symbols, borders, split panels or watermark. JUPITER: towering ochre, rust-orange and cream ammonia cloud banks with broad swirling storm lanes and dark turbulent depths, filtered honey sunlight above, immense atmosphere feels powerful, smaller billowing vapor in near foreground. The upper sky is warm smoky amber. Cloud shapes must be soft vapor and not rocky cliffs."
+    },
+    {
+      "planet": "saturn",
+      "artwork": "saturn-environment.png",
+      "animation": "saturn-descent.mp4",
+      "method": "Built-in image_gen artwork; cinematic camera animation rendered from imagery, not generative video.",
+      "prompt": "Create exactly one full-bleed cinematic photorealistic science-inspired environment artwork for Hey World planetary descent. Landscape 16:9, 1920x1080. Immersive first-person aerial camera INSIDE the planet's atmosphere looking across and down into layered clouds, horizon at upper third, dramatic depth, distant forms centered as target for a slow forward descending camera. Rich believable volume and scattering, elegant film still. This is an imagined cloud environment for a web experience. This planet has NO solid surface: all visible lower forms must be clearly soft gaseous clouds, no rocks, mountains, water, ground or frozen terrain. No spacecraft, characters, architecture, vegetation, text, symbols, borders, split panels or watermark. SATURN: serene golden sand-colored and pale ivory cloud layers, sprawling hazy amber atmosphere lit by soft diffuse sunlight, thin wispy bands sweep diagonally toward far distance, billowing cream foreground cloud curtains and warm shadowed depths. Extremely subtle curved ring shadow across the distant upper haze, do not place a separate ringed planet in the sky. No solid surface."
+    },
+    {
+      "planet": "uranus",
+      "artwork": "uranus-environment.png",
+      "animation": "uranus-descent.mp4",
+      "method": "Built-in image_gen artwork; cinematic camera animation rendered from imagery, not generative video.",
+      "prompt": "Create exactly one full-bleed cinematic photorealistic science-inspired environment artwork for Hey World planetary descent. Landscape 16:9, 1920x1080. Immersive first-person aerial camera INSIDE the planet's atmosphere looking across and down into layered clouds, horizon at upper third, dramatic depth, distant forms centered as target for a slow forward descending camera. Rich believable volume and scattering, elegant film still. This is an imagined cloud environment for a web experience. This planet has NO solid surface: all visible lower forms must be clearly soft gaseous clouds, no rocks, mountains, water, ground or frozen terrain. No spacecraft, characters, architecture, vegetation, text, symbols, borders, split panels or watermark. URANUS: vast luminous pale turquoise and icy cyan methane atmosphere, smooth layered vapor sheets with a few soft billowing clouds in near foreground, delicate blue-green haze and deep teal cloud valleys, faint soft sunlight from far away. Ethereal quiet scale; muted aqua sky. Clouds of gas only, NOT icebergs, NOT an ocean, NOT snowy mountains."
+    },
+    {
+      "planet": "neptune",
+      "artwork": "neptune-environment.png",
+      "animation": "neptune-descent.mp4",
+      "method": "Built-in image_gen artwork; cinematic camera animation rendered from imagery, not generative video.",
+      "prompt": "Create exactly one full-bleed cinematic photorealistic science-inspired environment artwork for Hey World planetary descent. Landscape 16:9, 1920x1080. Immersive first-person aerial camera INSIDE the planet's atmosphere looking across and down into layered clouds, horizon at upper third, dramatic depth, distant forms centered as target for a slow forward descending camera. Rich believable volume and scattering, elegant film still. This is an imagined cloud environment for a web experience. This planet has NO solid surface: all visible lower forms must be clearly soft gaseous clouds, no rocks, mountains, water, ground or frozen terrain. No spacecraft, characters, architecture, vegetation, text, symbols, borders, split panels or watermark. NEPTUNE: energetic cobalt, ultramarine and deep indigo methane cloud atmosphere with fast-looking wispy white storm ribbons, spiraling dark blue cloud lanes receding toward the horizon, low remote sunlight striking upper vapor edges. Dramatic yet readable blue volumes, immense depth, mist in foreground. Gas clouds only, no water/ocean/waves/land/icebergs."
+    }
+  ]
+}
