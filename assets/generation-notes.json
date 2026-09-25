@@ -13,24 +13,6 @@
       "prompt": "Create a new replacement image asset for Hey World, an eight-planet exploration website. Single full-bleed landscape image, 16:9, 2048x1152. STRICT NADIR CAMERA: directly overhead looking vertically down, optical axis perpendicular to the local terrain, authentic map-like aerial photograph. The surface fills EVERY pixel corner-to-corner. No horizon, sky, sun, planet edge or space visible. Photorealistic planetary exploration imaging with restrained natural color, plausible scale, consistent lighting and finely resolved irregular texture; not fantasy concept art, not game render, not glossy or oversharpened. Camera target remains centered for a vertical downward zoom animation. No writing, labels, spacecraft, humans, buildings, roads, borders or watermark. MERCURY: airless heavily cratered rocky regolith in natural low-saturation charcoal and warm gray. Broad older overlapping worn impact craters, a smaller fresh bowl crater just off the exact center, scattered tiny craterlets and rough ejecta, gradual geological variation not evenly repeated polka-dot circles. Hard sun from the upper left creates short consistent shadows INSIDE crater walls; no atmospheric haze or blue cast. View like a high-resolution MESSENGER orbital frame covering a few kilometers. Entire frame is terrain seen straight down, including top edge."
     },
     {
-      "planet": "venus",
-      "artwork": "venus-environment.png",
-      "animation": "venus-descent.mp4",
-      "prompt": "Create a single full-bleed photographic scientific-reconstruction environment asset for Hey World. Landscape 16:9, 2048x1152. STRICT TOP-DOWN / NADIR VIEW: camera directly overhead looking vertically down. Entire frame is filled with the same local surface or atmosphere, all four corners included. No horizon, skyline, sunlight disc, planetary limb, distant planet, outer space or decorative stars. Natural visible-light color and restrained contrast based on space mission observations; fine irregular structure, no dramatic film sunset, neon, surreal fantasy, or exaggerated relief. Fixed central anchor for a straight downward approach. No text, diagrams, borders, spacecraft or humans. VENUS BELOW THE CLOUDS: physically plausible overhead reconstruction of dim barren volcanic terrain, informed by Venera basaltic surface photographs and Magellan geology. Broad ancient muted gray-brown basalt lava-flow plains, overlapping gently lobed flow margins, scattered shallow craters, small broken slab-like rock fields and low ridges seen vertically from above. Diffuse warm yellow-amber illumination filtered through dense atmosphere, soft low-contrast shadows, uniform thin ochre atmospheric veil partly obscures the far-smaller textures. It must read as rock, not a desert on Earth. No active glowing lava, fire, rivers, water, vegetation or clear sky. Restrained dull palette, plausible solid terrain under heavy haze. NOT a directly observed optical orbital photograph: an unlabeled realistic reconstruction."
-    },
-    {
-      "planet": "earth",
-      "artwork": "earth-environment.png",
-      "animation": "earth-descent.mp4",
-      "prompt": "Create a new replacement image asset for Hey World, an eight-planet exploration website. Single full-bleed landscape image, 16:9, 2048x1152. STRICT NADIR CAMERA: directly overhead looking vertically down, optical axis perpendicular to the local terrain, authentic map-like aerial photograph. The surface fills EVERY pixel corner-to-corner. No horizon, sky, sun, planet edge or space visible. Photorealistic planetary exploration imaging with restrained natural color, plausible scale, consistent lighting and finely resolved irregular texture; not fantasy concept art, not game render, not glossy or oversharpened. Camera target remains centered for a vertical downward zoom animation. No writing, labels, spacecraft, humans, buildings, roads, borders or watermark. EARTH: an exceptionally realistic straight-down satellite/aerial view of a remote dry coastal landscape. Irregular tan sedimentary hills and pale sand meet deep natural blue-green coastal water; a branching shallow river channel and dark green patches of riparian vegetation lead into a small estuary. Rocky relief, sediment fans and coastal shallows form physically coherent drainage patterns, water darkens with depth. Natural midday colors, limited saturation, subtle shallow water detail, small scattered white cloud wisps at most 3 percent of frame, no visible civilization. Cover roughly a few kilometers; distinctly Earth from land and water, top-down all the way to the upper edge. No ocean horizon."
-    },
-    {
-      "planet": "mars",
-      "artwork": "mars-environment.png",
-      "animation": "mars-descent.mp4",
-      "prompt": "Create a new replacement image asset for Hey World, an eight-planet exploration website. Single full-bleed landscape image, 16:9, 2048x1152. STRICT NADIR CAMERA: directly overhead looking vertically down, optical axis perpendicular to the local terrain, authentic map-like aerial photograph. The surface fills EVERY pixel corner-to-corner. No horizon, sky, sun, planet edge or space visible. Photorealistic planetary exploration imaging with restrained natural color, plausible scale, consistent lighting and finely resolved irregular texture; not fantasy concept art, not game render, not glossy or oversharpened. Camera target remains centered for a vertical downward zoom animation. No writing, labels, spacecraft, humans, buildings, roads, borders or watermark. MARS: natural subdued ochre, rusty brown and dusty salmon regolith captured by a high-resolution Mars reconnaissance orbiter. An irregular degraded impact crater occupies the central area, with layered rim, fine dark basaltic windblown sand streaks and small rippled dune fields within the floor, tiny scattered craterlets and eroded rocky ridges. Geological forms at consistent kilometer scale, not gigantic foreground rocks. Soft dusty shadows consistent with one midday sun, very subtle atmospheric dust; not brilliant red or orange. The ground covers every edge, no horizon. Crater and dunes are viewed straight down like scientific aerial photography."
-    },
-    {
       "planet": "jupiter",
       "artwork": "jupiter-environment.png",
       "animation": "jupiter-descent.mp4",
@@ -54,5 +36,24 @@
       "animation": "neptune-descent.mp4",
       "prompt": "Create one photorealistic scientific reconstruction of planetary CLOUD TOPS, strictly straight-down nadir view for an orbital descent website. Landscape16:9,2048x1152. Camera optical axis perpendicular to atmospheric layer; the atmosphere fills the entire image edge to edge, no horizon or planetary limb. Base visible-light color on the Oxford 2024 recalibration of Voyager Uranus/Neptune photographs: muted pale blue-green rather than saturated royal blue. Close-range details are deliberately understated and softly diffuse, as plausible suspended gas seen through haze. No strong shadows, no perspective into valleys, no Earth-like thunderheads. NO solid surface, rocks, mountains, snowy ridges, ice plates, oceans, water waves, coastlines or islands. No sun, stars, sunset, dramatic cinematic lighting, labels, text, spacecraft, borders or watermark. NEPTUNE: subdued blue-green atmosphere, just a little bluer and slightly darker than Uranus, not vivid cobalt/royalblue. Very soft broad atmospheric banding, two thin irregular wispy white methane-cloud streaks and one subtle diffuse blue-gray elliptical vortex toward the central region. Modest fluid wisps, no sharp white edges and no foamy white cloudscapes. Natural soft gas texture seen from directly above at a fixed central anchor, scientific spacecraft photography rather than fantasy. Broad haze reduces small-scale contrast; muted powder-blue/teal palette, atmospheric structure never reads as liquid water."
     }
-  ]
+  ],
+  "scope": "The five scene records cover Mercury, Jupiter, Saturn, Uranus, and Neptune only. Earth, Venus, and Mars retain their original supplied CloudFront visuals.",
+  "originalMedia": {
+    "earth": {
+      "approach": "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4",
+      "background": "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4",
+      "approachPlaybackRate": 1.3
+    },
+    "venus": {
+      "approach": "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b30f64d9-1637-477a-83df-d0fc6461a422.mp4",
+      "background": "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b30f64d9-1637-477a-83df-d0fc6461a422.mp4",
+      "approachPlaybackRate": 1.3
+    },
+    "mars": {
+      "approach": "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/5fc5651c-3b5d-4171-b507-87f7e635d1b4.mp4",
+      "background": "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/3c83091e-4046-4fd6-adbb-2edb728be79a.mp4",
+      "approachPlaybackRate": 1.3,
+      "introPlaybackRate": "Math.max(0.25, duration / 3), matching the original approximately three-second intro"
+    }
+  }
 }
